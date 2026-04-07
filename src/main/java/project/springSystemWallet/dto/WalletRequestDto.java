@@ -1,4 +1,4 @@
-package project.springSystemWallet.requestDto;
+package project.springSystemWallet.dto;
 
 import lombok.*;
 import project.springSystemWallet.entity.OperationType;
@@ -6,10 +6,10 @@ import project.springSystemWallet.entity.OperationType;
 import java.util.UUID;
 
 @Data
-@Setter
-@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class WalletRequestDto {
-    private UUID uuid;
+    private UUID id;
     private OperationType operationType;
-    private Long balance;
+    private Long amount;
 }

@@ -9,14 +9,16 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Setter
-@Getter
-@Table(name = "wallet")
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "wallets")
 public class Wallet {
     @Id
-    private UUID uuid = UUID.randomUUID();
+    private UUID uuid;
 
-    private String firstName;
+    private String owner;
 
-    private Long balance = 0L;
+    private WalletType type;
+
+    private Long balance;
 }

@@ -1,6 +1,8 @@
 package project.springSystemWallet.controller;
 
 import org.springframework.web.bind.annotation.*;
+import project.springSystemWallet.dto.WalletRequestDto;
+import project.springSystemWallet.dto.WalletResponseDto;
 import project.springSystemWallet.entity.Wallet;
 import project.springSystemWallet.service.WalletService;
 
@@ -16,18 +18,19 @@ public class WalletController {
         this.walletService = walletService;
     }
 
-    //{"firstName": "Maxim"}
+    //{"owner": "Maxim"}
     @PostMapping("/wallets/create")
-    public void createWallet(String name) {
-        walletService.createWallet(name);
+    public WalletResponseDto createWallet(@RequestBody WalletResponseDto owner) {
+        return walletService.createWallet(owner.getOwner());
     }
 
-    @GetMapping("/wallets/{walletId}")
-    public Optional<Wallet> getWalletId(@PathVariable String name) {
-        return walletService.getWallet(name);
+
+    @GetMapping("/wallets/getOwner/{owner}")
+    public WalletResponseDto getWallet(@PathVariable String owner) {
+        return walletService.getWallet(owner);
     }
 
-    @GetMapping("/wallets/{walletBalanceId}")
+    @GetMapping("/wallets/getBalance/{uuid}")
     public Long getWalletBalance(@PathVariable UUID uuid) {
         return walletService.getBalanceWallet(uuid);
     }
